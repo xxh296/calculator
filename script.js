@@ -51,8 +51,13 @@ function placeKeys(){
         key.addEventListener("click", () => {
             key.style.backgroundColor = "rgb(180,180,180";
             if (/^[\d.]$/.test(key.innerText)) {
-                display.innerText += key.innerText;
-                num1 = display.innerText;
+                if (key.innerText === "." && display.innerText.includes(".")) {
+                    console.log("ERROR: A \".\" character already exists.");
+                } else {
+                    display.innerText += key.innerText;
+                    num1 = Number(display.innerText);
+                }
+
             }
             
 
