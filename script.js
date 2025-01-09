@@ -1,26 +1,3 @@
-// const UiText = {
-//     1: "1", 
-//     2: "2", 
-//     3: "3", 
-//     4: "4", 
-//     5: "5", 
-//     6: "6", 
-//     7: "7", 
-//     8: "8", 
-//     9: "9", 
-//     0: "0", 
-//     EQUAL: "=", 
-//     PLUS: "+", 
-//     MINUS: "-", 
-//     MULTIPLY: "*", 
-//     DIVIDE: "/",      
-//     AC: "AC", 
-//     NEGATIVE_POSITIVE: "+/-", 
-//     PERCENT: "%", 
-//     DOT:".", 
-//     BACKSPACE: "<bsp",
-// };
-
 const UiText = {
     SEVEN: "7",
     EIGHT: "8",
@@ -45,6 +22,7 @@ const UiText = {
 };
 
 const keypad = document.querySelector("#keypad");
+const display = document.querySelector("#display");
 
 function placeKeys(){
     const keys = Object.keys(UiText);  // Get keys from UiText
@@ -71,33 +49,23 @@ function placeKeys(){
         }
 
         key.addEventListener("click", () => {
-            // Change the background color to black when clicked
-            key.style.backgroundColor = "black";
+            key.style.backgroundColor = "rgb(180,180,180";
+            if (/^[\d.]$/.test(key.innerText)) {
+                display.innerText += key.innerText;
+                num1 = display.innerText;
+            }
+            
+
         
-            // Use a timeout to restore the original color after 300ms
+            // restore the original color
             setTimeout(() => {
                 if (/^\d$/.test(key.innerText)) {
-                    // Restore to number button color after click
                     key.style.backgroundColor = btnColorNumbers;
                 } else {
-                    // Restore to operation button color after click
                     key.style.backgroundColor = btnColorOps;
                 }
-            }, 300);  // 300ms delay before returning to the original color
+            }, 50);
         });
-
-        // key.addEventListener("click", ()=>{
-        //     key.style.backgroundColor = "black);
-        //     if (/^\d$/.test(key.innerText)){
-        //         setTimeout(() => {
-        //             key.style.backgroundColor = btnColorNumbers;
-        //         }, 300);            
-        //     } else {
-        //         setTimeout(() => {
-        //             key.style.backgroundColor = btnColorOps;
-        //         }, 300);
-        //     }
-        // });
 
         keypad.appendChild(key);        
     }
@@ -114,8 +82,8 @@ const Operator = {
     DIVIDE: " / ",
 }
 */
-const num1 = 0;
-const num2 = 0;
+let num1 = 0;
+let num2 = 0;
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
