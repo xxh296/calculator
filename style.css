@@ -1,9 +1,10 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: darkslategray;
+    /* background-color: darkslategray; */
+    background-color: black;
     color: bisque;
-    border-radius: 15px;
+    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
@@ -23,13 +24,23 @@ title {
 }
 
 #display {
-    width: 450px;
-    height: 150px;
-    background-color: aqua;
+    width: 460px;
+    height: 200px;
+    background-color: gray;
+    /* background-color: aqua; */
 }
 
 #keypad {
-    width: 450px;
-    height: 450px;
-    background-color: blue;
+    width: 460px;
+    height: 360px;
+    background-color: gray;
+    font-size: 2em;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* align-content: center; */
+    justify-content: space-between;
+    /* justify-content: center; */
 }
+
