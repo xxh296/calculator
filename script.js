@@ -55,18 +55,26 @@ function placeKeys(){
                     console.log("ERROR: \".\" character already exists.");
                 } else if (display.innerText.length <= 12){
                     display.innerText += key.innerText;
-                    num1 = Number(display.innerText);
+                    tempNumber = Number(display.innerText);
+                    // debug
+                    console.log("tempNumber line 58: " + tempNumber);
                 } else {
                     console.log("ERROR: Display is full.")
                 }
             }
+
+            
+
+            
+
+
 
             if (!/^[\d.]$/.test(key.innerText)){
                 switch (key.innerText){
                     case UiText.AC:
                         clear();
                         break
-                    case UiText.NEGATIVE_POSITIVE: // test, if num2 and num1 need a string conversion
+                    case UiText.NEGATIVE_POSITIVE:
                         if (num2 != 0) {
                             display.innerText = num2 * -1;
                             num2 *= -1;
@@ -77,7 +85,7 @@ function placeKeys(){
                             display.innerText = display.innerText * -1;
                         }
                         break
-                    case UiText.PERCENT: // same test as above
+                    case UiText.PERCENT: 
                         if (num2 != 0) {
                             display.innerText = num2 * 0.01;
                             num2 *= 0.01;
@@ -108,16 +116,24 @@ function placeKeys(){
                             // }
                         }
                         break
-
+                    case UiText.PLUS:                   
+                        operator = UiText.PLUS;
+                        num1 = tempNumber;
+                        console.log("tempNumber line 121: " + tempNumber);
+                        tempNumber = 0;
+                        // num2 = tempNumber;
+                        console.log("tempNumber line 124: " + tempNumber);
+                        clear();                            
+                        break
+                    case UiText.EQUAL:
+                        num2 = tempNumber;
+                        console.log("tempNumber line 129: " + tempNumber);  
+                        display.innerText = operate(add, num1, num2); 
+                        tempNumber = 0;
+                        console.log("tempNumber line 132: " + tempNumber);
+                        break 
 
                 }
-
-
-                // if (key.innerText == UiText.AC || key.innerText == UiText.EQUAL){
-                //     clear();
-                // }
-                
-                // console.log("Add the operations logic.")
             }
             
 
@@ -149,12 +165,14 @@ const Operator = {
 */
 let num1 = 0;
 let num2 = 0;
+let tempNumber = 0;
+let operator = "";
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
-const clear = () => display.innerText = "";
+const clear = () => {display.innerText = ""};
 
 function operate(operation, num1, num2){
     switch (operation) {
