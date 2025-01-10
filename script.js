@@ -23,6 +23,10 @@ const UiText = {
 
 const keypad = document.querySelector("#keypad");
 const display = document.querySelector("#display");
+let num1 = 0;
+let num2 = 0;
+let tempNumber = 0;
+let operator = "";
 
 function placeKeys(){
     const keys = Object.keys(UiText);  // Get keys from UiText
@@ -31,8 +35,6 @@ function placeKeys(){
         key.style.width = "85px";
         key.style.height = "85px";
         key.style.aspectRatio = "1/1";
-        // key.style.backgroundColor = "gray";
-        // key.classList.add("key");
         key.textContent = UiText[keys[i]]; 
         key.style.border = "3px solid black";
 
@@ -45,7 +47,6 @@ function placeKeys(){
         } else {
             key.style.backgroundColor = btnColorOps;
             key.style.borderColor = "orange";
-            // key.style.borderColor = "rgb(50,70,55)";
         }
 
         key.addEventListener("click", () => {
@@ -56,24 +57,17 @@ function placeKeys(){
                 } else if (display.innerText.length <= 12){
                     display.innerText += key.innerText;
                     tempNumber = Number(display.innerText);
-                    // debug
-                    console.log("tempNumber line 58: " + tempNumber);
                 } else {
                     console.log("ERROR: Display is full.")
                 }
             }
-
-            
-
-            
-
-
 
             if (!/^[\d.]$/.test(key.innerText)){
                 switch (key.innerText){
                     case UiText.AC:
                         clear();
                         break
+
                     case UiText.NEGATIVE_POSITIVE:
                         if (num2 != 0) {
                             display.innerText = num2 * -1;
@@ -85,6 +79,7 @@ function placeKeys(){
                             display.innerText = display.innerText * -1;
                         }
                         break
+
                     case UiText.PERCENT: 
                         if (num2 != 0) {
                             display.innerText = num2 * 0.01;
@@ -96,6 +91,7 @@ function placeKeys(){
                             display.innerText = display.innerText * 0.01;
                         }
                         break
+
                     case UiText.BACKSPACE:
                         if (num2 != 0) {
                             display.innerText = num2.toString().slice(0, -1);
@@ -116,28 +112,44 @@ function placeKeys(){
                             // }
                         }
                         break
+
                     case UiText.PLUS:                   
-                        operator = UiText.PLUS;
+                        operator = add;
                         num1 = tempNumber;
-                        console.log("tempNumber line 121: " + tempNumber);
                         tempNumber = 0;
-                        // num2 = tempNumber;
-                        console.log("tempNumber line 124: " + tempNumber);
                         clear();                            
                         break
+                        
+                    case UiText.MINUS:                   
+                        operator = subtract;
+                        num1 = tempNumber;
+                        tempNumber = 0;
+                        clear();                            
+                        break
+                    
+                    case UiText.MULTIPLY:                   
+                        operator = multiply;
+                        num1 = tempNumber;
+                        tempNumber = 0;
+                        clear();                            
+                        break
+
+                    case UiText.DIVIDE:                   
+                        operator = divide;
+                        num1 = tempNumber;
+                        tempNumber = 0;
+                        clear();                            
+                        break
+                        
                     case UiText.EQUAL:
                         num2 = tempNumber;
-                        console.log("tempNumber line 129: " + tempNumber);  
-                        display.innerText = operate(add, num1, num2); 
+                        display.innerText = operate(operator, num1, num2); 
                         tempNumber = 0;
-                        console.log("tempNumber line 132: " + tempNumber);
+                        num1 = 0;
+                        num2 = 0;
                         break 
-
                 }
-            }
-            
-
-        
+            }      
             // restore the original color
             setTimeout(() => {
                 if (/^\d$/.test(key.innerText)) {
@@ -153,20 +165,6 @@ function placeKeys(){
 }
 
 placeKeys();
-
-
-/*
-const Operator = {
-    ADD: " + ",
-    SUBTRACT: " - ",
-    MULTIPLY: " * ",
-    DIVIDE: " / ",
-}
-*/
-let num1 = 0;
-let num2 = 0;
-let tempNumber = 0;
-let operator = "";
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
