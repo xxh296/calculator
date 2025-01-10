@@ -18,7 +18,7 @@ const UiText = {
     DOT: ".",
     EQUAL: "=",
     DIVIDE: "/",
-    BACKSPACE: "<<"
+    BACKSPACE: "\u2190"
 };
 
 const keypad = document.querySelector("#keypad");
@@ -44,9 +44,12 @@ function placeKeys(){
         if (/^\d$/.test(key.innerText)){
             key.style.backgroundColor = btnColorNumbers;
             key.style.borderColor = "rgb(80,80,80)";
+            key.style.fontWeight = 300;
+
         } else {
             key.style.backgroundColor = btnColorOps;
-            key.style.borderColor = "orange";
+            key.style.borderColor = "darkorange";
+            key.style.fontWeight = 800;
         }
 
         key.addEventListener("click", () => {
@@ -54,7 +57,7 @@ function placeKeys(){
             if (/^[\d.]$/.test(key.innerText)) {
                 if (key.innerText === "." && display.innerText.includes(".")) {
                     console.log("ERROR: \".\" character already exists.");
-                } else if (display.innerText.length <= 12){
+                } else if (display.innerText.length <= 11){
                     display.innerText += key.innerText;
                     tempNumber = Number(display.innerText);
                 } else {
@@ -183,6 +186,6 @@ function operate(operation, num1, num2){
         case divide:
             return divide(num1, num2);
         default:
-            return "ERROR: Invslid input."
+            return "Invalid input"
     }
 }
