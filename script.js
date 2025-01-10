@@ -27,6 +27,7 @@ let num1 = 0;
 let num2 = 0;
 let tempNumber = 0;
 let operator = "";
+let isResult = false;
 
 function placeKeys(){
     const keys = Object.keys(UiText);  // Get keys from UiText
@@ -59,39 +60,64 @@ function placeKeys(){
                 if (key.innerText === "." && display.innerText.includes(".")) {
                     console.log("ERROR: \".\" character already exists.");
                 } else if (display.innerText.length <= 11){
-                    console.log("tempNumber: " + tempNumber);
-                    console.log("num1: " + num1);
-                    console.log("num2: " + num2);
-                    console.log("display.innerText: " + display.innerText);
+
+                    // if (isResult){
+                    //     clear();
+                        // display.innerText = "";
+
+                    
+
+
+
+                    // console.log("tempNumber: " + tempNumber);
+                    // console.log("num1: " + num1);
+                    // console.log("num2: " + num2);
+                    // console.log("display.innerText: " + display.innerText);
                     if (display.innerText == 0){
                         display.innerText = "";
                         display.innerText += key.innerText;
                         tempNumber = Number(display.innerText);
 
-                        console.log("tempNumber: " + tempNumber);
-                        console.log("num1: " + num1);
-                        console.log("num2: " + num2);
-                        console.log("display.innerText: " + display.innerText);
+                        // console.log("tempNumber: " + tempNumber);
+                        // console.log("num1: " + num1);
+                        // console.log("num2: " + num2);
+                        // console.log("display.innerText: " + display.innerText);
                     }else {
+
+                        if (isResult){
+                            display.innerText = "";
+                            isResult = false;
+                            console.log("isResult from line 90: " + isResult);
+                        }
+
+
                         if (num2 == 0 && num1 != 0 && tempNumber ==0){
                             display.innerText = "";
                             display.innerText += key.innerText;
                             tempNumber = Number(display.innerText);
 
-                            console.log("tempNumber: " + tempNumber);
-                            console.log("num1: " + num1);
-                            console.log("num2: " + num2);
-                            console.log("display.innerText: " + display.innerText);
+                            // console.log("tempNumber: " + tempNumber);
+                            // console.log("num1: " + num1);
+                            // console.log("num2: " + num2);
+                            // console.log("display.innerText: " + display.innerText);
                         } else {
                             display.innerText += key.innerText;
                             tempNumber = Number(display.innerText);
 
-                            console.log("tempNumber: " + tempNumber);
-                            console.log("num1: " + num1);
-                            console.log("num2: " + num2);
-                            console.log("display.innerText: " + display.innerText);
+                            // console.log("tempNumber: " + tempNumber);
+                            // console.log("num1: " + num1);
+                            // console.log("num2: " + num2);
+                            // console.log("display.innerText: " + display.innerText);
                         }                        
-                    }                    
+                    }  
+                 isResult = false;   
+                // } 
+                // else {
+                //     isResult = false;
+                // }
+
+
+
                 } else {
                     console.log("ERROR: Display is full.")
                 }
@@ -154,10 +180,10 @@ function placeKeys(){
                         tempNumber = 0;
                         display.innerText = num1;
 
-                        console.log("tempNumber: " + tempNumber);
-                        console.log("num1: " + num1);
-                        console.log("num2: " + num2);
-                        console.log("display.innerText: " + display.innerText);
+                        // console.log("tempNumber: " + tempNumber);
+                        // console.log("num1: " + num1);
+                        // console.log("num2: " + num2);
+                        // console.log("display.innerText: " + display.innerText);
                         // clear();                            
                         break
                         
@@ -167,10 +193,10 @@ function placeKeys(){
                         tempNumber = 0;
                         display.innerText = num1;
 
-                        console.log("tempNumber: " + tempNumber);
-                        console.log("num1: " + num1);
-                        console.log("num2: " + num2);
-                        console.log("display.innerText: " + display.innerText);
+                        // console.log("tempNumber: " + tempNumber);
+                        // console.log("num1: " + num1);
+                        // console.log("num2: " + num2);
+                        // console.log("display.innerText: " + display.innerText);
                         // clear();                            
                         break
                     
@@ -180,10 +206,10 @@ function placeKeys(){
                         tempNumber = 0;
                         display.innerText = num1;
 
-                        console.log("tempNumber: " + tempNumber);
-                        console.log("num1: " + num1);
-                        console.log("num2: " + num2);
-                        console.log("display.innerText: " + display.innerText);
+                        // console.log("tempNumber: " + tempNumber);
+                        // console.log("num1: " + num1);
+                        // console.log("num2: " + num2);
+                        // console.log("display.innerText: " + display.innerText);
                         // clear();                            
                         break
 
@@ -193,10 +219,10 @@ function placeKeys(){
                         tempNumber = 0;
                         display.innerText = num1;
 
-                        console.log("tempNumber: " + tempNumber);
-                        console.log("num1: " + num1);
-                        console.log("num2: " + num2);
-                        console.log("display.innerText: " + display.innerText);
+                        // console.log("tempNumber: " + tempNumber);
+                        // console.log("num1: " + num1);
+                        // console.log("num2: " + num2);
+                        // console.log("display.innerText: " + display.innerText);
                         // clear();                            
                         break
                         
@@ -209,6 +235,8 @@ function placeKeys(){
                         tempNumber = 0;
                         num1 = 0;
                         num2 = 0;
+                        isResult = true;
+                        console.log("isResult at UiText.EQUAL: " + true);
                         break 
                 }
             }      
@@ -232,7 +260,11 @@ const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
-const clear = () => display.innerText = Number(0);
+const clear = () => {
+    display.innerText = Number(0);
+    isResult = false;
+    console.log("isResult at clear(): " + isResult);
+}
 
 function operate(operation, num1, num2){
     switch (operation) {
@@ -248,3 +280,5 @@ function operate(operation, num1, num2){
             return "Invalid input"
     }
 }
+
+console.log("isResult at the end: " + isResult);
