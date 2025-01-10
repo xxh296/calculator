@@ -73,11 +73,24 @@ function placeKeys(){
                         console.log("num2: " + num2);
                         console.log("display.innerText: " + display.innerText);
                     }else {
-                        if (num2 == 0 && num1 != 0){
+                        if (num2 == 0 && num1 != 0 && tempNumber ==0){
                             display.innerText = "";
                             display.innerText += key.innerText;
                             tempNumber = Number(display.innerText);
-                        }                            
+
+                            console.log("tempNumber: " + tempNumber);
+                            console.log("num1: " + num1);
+                            console.log("num2: " + num2);
+                            console.log("display.innerText: " + display.innerText);
+                        } else {
+                            display.innerText += key.innerText;
+                            tempNumber = Number(display.innerText);
+
+                            console.log("tempNumber: " + tempNumber);
+                            console.log("num1: " + num1);
+                            console.log("num2: " + num2);
+                            console.log("display.innerText: " + display.innerText);
+                        }                        
                     }                    
                 } else {
                     console.log("ERROR: Display is full.")
@@ -152,21 +165,39 @@ function placeKeys(){
                         operator = subtract;
                         num1 = tempNumber;
                         tempNumber = 0;
-                        clear();                            
+                        display.innerText = num1;
+
+                        console.log("tempNumber: " + tempNumber);
+                        console.log("num1: " + num1);
+                        console.log("num2: " + num2);
+                        console.log("display.innerText: " + display.innerText);
+                        // clear();                            
                         break
                     
                     case UiText.MULTIPLY:                   
                         operator = multiply;
                         num1 = tempNumber;
                         tempNumber = 0;
-                        clear();                            
+                        display.innerText = num1;
+
+                        console.log("tempNumber: " + tempNumber);
+                        console.log("num1: " + num1);
+                        console.log("num2: " + num2);
+                        console.log("display.innerText: " + display.innerText);
+                        // clear();                            
                         break
 
                     case UiText.DIVIDE:                   
                         operator = divide;
                         num1 = tempNumber;
                         tempNumber = 0;
-                        clear();                            
+                        display.innerText = num1;
+
+                        console.log("tempNumber: " + tempNumber);
+                        console.log("num1: " + num1);
+                        console.log("num2: " + num2);
+                        console.log("display.innerText: " + display.innerText);
+                        // clear();                            
                         break
                         
                     case UiText.EQUAL:
