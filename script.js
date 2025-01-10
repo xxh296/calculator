@@ -31,7 +31,7 @@ function placeKeys(){
         key.style.width = "85px";
         key.style.height = "85px";
         key.style.aspectRatio = "1/1";
-        key.style.backgroundColor = "gray";
+        // key.style.backgroundColor = "gray";
         // key.classList.add("key");
         key.textContent = UiText[keys[i]]; 
         key.style.border = "3px solid black";
@@ -52,12 +52,47 @@ function placeKeys(){
             key.style.backgroundColor = "rgb(180,180,180";
             if (/^[\d.]$/.test(key.innerText)) {
                 if (key.innerText === "." && display.innerText.includes(".")) {
-                    console.log("ERROR: A \".\" character already exists.");
-                } else {
+                    console.log("ERROR: \".\" character already exists.");
+                } else if (display.innerText.length <= 12){
                     display.innerText += key.innerText;
                     num1 = Number(display.innerText);
+                } else {
+                    console.log("ERROR: Display is full.")
+                }
+            }
+
+            if (!/^[\d.]$/.test(key.innerText)){
+                switch (key.innerText){
+                    case UiText.AC:
+                        clear();
+                        break
+                    case UiText.NEGATIVE_POSITIVE:
+                        if (num2 != 0) {
+                            display.innerText = num2 * -1;
+                        } else if(num1 != 0){
+                            display.innerText = num1 * -1;
+                        } else if (display.innerText != 0){
+                            display.innerText = display.innerText * -1;
+                        }
+                        break
+                    case UiText.PERCENT:
+                        if (num2 != 0) {
+                            display.innerText = num2 * 0.01;
+                        } else if(num1 != 0){
+                            display.innerText = num1 * 0.01;
+                        } else if (display.innerText != 0){
+                            display.innerText = display.innerText * 0.01;
+                        }
+                        break
+
                 }
 
+
+                // if (key.innerText == UiText.AC || key.innerText == UiText.EQUAL){
+                //     clear();
+                // }
+                
+                // console.log("Add the operations logic.")
             }
             
 
@@ -94,6 +129,7 @@ const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
+const clear = () => display.innerText = "";
 
 function operate(operation, num1, num2){
     switch (operation) {
