@@ -31,6 +31,7 @@ let operator = "";
 function placeKeys(){
     const keys = Object.keys(UiText);  // Get keys from UiText
     for (let i = 0; i < keys.length; i++) {
+        display.innerText = Number(0);
         const key = document.createElement("div");
         key.style.width = "85px";
         key.style.height = "85px";
@@ -58,8 +59,26 @@ function placeKeys(){
                 if (key.innerText === "." && display.innerText.includes(".")) {
                     console.log("ERROR: \".\" character already exists.");
                 } else if (display.innerText.length <= 11){
-                    display.innerText += key.innerText;
-                    tempNumber = Number(display.innerText);
+                    console.log("tempNumber: " + tempNumber);
+                    console.log("num1: " + num1);
+                    console.log("num2: " + num2);
+                    console.log("display.innerText: " + display.innerText);
+                    if (display.innerText == 0){
+                        display.innerText = "";
+                        display.innerText += key.innerText;
+                        tempNumber = Number(display.innerText);
+
+                        console.log("tempNumber: " + tempNumber);
+                        console.log("num1: " + num1);
+                        console.log("num2: " + num2);
+                        console.log("display.innerText: " + display.innerText);
+                    }else {
+                        if (num2 == 0 && num1 != 0){
+                            display.innerText = "";
+                            display.innerText += key.innerText;
+                            tempNumber = Number(display.innerText);
+                        }                            
+                    }                    
                 } else {
                     console.log("ERROR: Display is full.")
                 }
@@ -120,7 +139,13 @@ function placeKeys(){
                         operator = add;
                         num1 = tempNumber;
                         tempNumber = 0;
-                        clear();                            
+                        display.innerText = num1;
+
+                        console.log("tempNumber: " + tempNumber);
+                        console.log("num1: " + num1);
+                        console.log("num2: " + num2);
+                        console.log("display.innerText: " + display.innerText);
+                        // clear();                            
                         break
                         
                     case UiText.MINUS:                   
@@ -146,6 +171,9 @@ function placeKeys(){
                         
                     case UiText.EQUAL:
                         num2 = tempNumber;
+                        // console.log("tempNumber is: " + tempNumber);
+                        // console.log("num2 is: " + num2);
+                        // display.innerText += UiText.EQUAL;
                         display.innerText = operate(operator, num1, num2); 
                         tempNumber = 0;
                         num1 = 0;
@@ -173,7 +201,7 @@ const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
-const clear = () => {display.innerText = ""};
+const clear = () => display.innerText = Number(0);
 
 function operate(operation, num1, num2){
     switch (operation) {

@@ -31,6 +31,7 @@ title {
     height: 220px;
     background-color: gray;
     font-size: 4.3em;
+    word-break: break-all;
     overflow-wrap: anywhere; /* to wrap long numbers */
 }
 
