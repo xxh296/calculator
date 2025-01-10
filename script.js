@@ -110,7 +110,9 @@ function placeKeys(){
                             // console.log("display.innerText: " + display.innerText);
                         }                        
                     }  
-                 isResult = false;   
+                    // console.log("Before the 'stray' isResult at line 114: " + isResult);
+                    // isResult = false;
+                    // console.log("The 'stray' isResult at line 114: " + isResult);
                 // } 
                 // else {
                 //     isResult = false;
@@ -176,9 +178,12 @@ function placeKeys(){
 
                     case UiText.PLUS:                   
                         operator = add;
-                        num1 = tempNumber;
-                        tempNumber = 0;
-                        display.innerText = num1;
+                        if (tempNumber){
+                            num1 = tempNumber;
+                            tempNumber = 0;
+                            display.innerText = num1;
+                        }
+
 
                         // console.log("tempNumber: " + tempNumber);
                         // console.log("num1: " + num1);
@@ -189,9 +194,11 @@ function placeKeys(){
                         
                     case UiText.MINUS:                   
                         operator = subtract;
-                        num1 = tempNumber;
-                        tempNumber = 0;
-                        display.innerText = num1;
+                        if (tempNumber){
+                            num1 = tempNumber;
+                            tempNumber = 0;
+                            display.innerText = num1;
+                        }
 
                         // console.log("tempNumber: " + tempNumber);
                         // console.log("num1: " + num1);
@@ -202,9 +209,11 @@ function placeKeys(){
                     
                     case UiText.MULTIPLY:                   
                         operator = multiply;
-                        num1 = tempNumber;
-                        tempNumber = 0;
-                        display.innerText = num1;
+                        if (tempNumber){
+                            num1 = tempNumber;
+                            tempNumber = 0;
+                            display.innerText = num1;
+                        }
 
                         // console.log("tempNumber: " + tempNumber);
                         // console.log("num1: " + num1);
@@ -215,9 +224,11 @@ function placeKeys(){
 
                     case UiText.DIVIDE:                   
                         operator = divide;
-                        num1 = tempNumber;
-                        tempNumber = 0;
-                        display.innerText = num1;
+                        if (tempNumber){
+                            num1 = tempNumber;
+                            tempNumber = 0;
+                            display.innerText = num1;
+                        }
 
                         // console.log("tempNumber: " + tempNumber);
                         // console.log("num1: " + num1);
