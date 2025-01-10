@@ -66,24 +66,49 @@ function placeKeys(){
                     case UiText.AC:
                         clear();
                         break
-                    case UiText.NEGATIVE_POSITIVE:
+                    case UiText.NEGATIVE_POSITIVE: // test, if num2 and num1 need a string conversion
                         if (num2 != 0) {
                             display.innerText = num2 * -1;
+                            num2 *= -1;
                         } else if(num1 != 0){
                             display.innerText = num1 * -1;
+                            num1 *= -1;
                         } else if (display.innerText != 0){
                             display.innerText = display.innerText * -1;
                         }
                         break
-                    case UiText.PERCENT:
+                    case UiText.PERCENT: // same test as above
                         if (num2 != 0) {
                             display.innerText = num2 * 0.01;
+                            num2 *= 0.01;
                         } else if(num1 != 0){
                             display.innerText = num1 * 0.01;
+                            num1 *= 0.01;
                         } else if (display.innerText != 0){
                             display.innerText = display.innerText * 0.01;
                         }
                         break
+                    case UiText.BACKSPACE:
+                        if (num2 != 0) {
+                            display.innerText = num2.toString().slice(0, -1);
+                            // if (!display.innerText) {
+                            //     display.innerText = "0";
+                            // }
+                            num2 = Number(display.innerText);
+                        } else if(num1 != 0){
+                            display.innerText = num1.toString().slice(0, -1);
+                            // if (!display.innerText) {
+                            //     display.innerText = "0";
+                            // }
+                            num1 = Number(display.innerText);
+                        } else if (display.innerText != 0){
+                            display.innerText = display.innerText.slice(0, -1);
+                            // if (!display.innerText) {
+                            //     display.innerText = "0";
+                            // }
+                        }
+                        break
+
 
                 }
 
