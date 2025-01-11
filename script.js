@@ -294,8 +294,14 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 const clear = () => {
+    tempNumber = 0;
     display.innerText = Number(0);
     isResult = false;
+    console.log("display: " + display.innerText);
+    console.log("tempNumber: " + tempNumber);
+    console.log("num1: " + num1);
+    console.log("num2: " + num2);
+
     // console.log("isResult at clear(): " + isResult);
 }
 
@@ -308,9 +314,6 @@ function operate(operation, num1, num2){
         case multiply:
             return multiply(num1, num2);
         case divide:
-            // if (num2 == 0){
-            //     console.log("Can't divide by 0.");
-            // }
             return divide(num1, num2);
         default:
             return "Invalid input"
