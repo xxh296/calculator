@@ -157,6 +157,7 @@ function placeKeys(){
                         break
 
                     case UiText.BACKSPACE:
+                        /*
                         if (num2 != 0) {
                             display.innerText = num2.toString().slice(0, -1);
                             // if (!display.innerText) {
@@ -175,6 +176,19 @@ function placeKeys(){
                             //     display.innerText = "0";
                             // }
                         }
+                            */
+                        if (display.innerText){
+                            display.innerText = display.innerText.slice(0, -1);
+                        }
+
+                        if (display.innerText == ""){
+                            display.innerText = 0;
+                        }
+                        // console.log("display: " + display.innerText)
+                        // console.log("tempNumber: " + tempNumber);
+                        // console.log("num1: " + num1);
+                        // console.log("num2: " + num2);
+                        tempNumber = display.innerText;
                         break
 
                     case UiText.PLUS:                   
