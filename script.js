@@ -87,7 +87,7 @@ function placeKeys(){
                         if (isResult){
                             display.innerText = "";
                             isResult = false;
-                            console.log("isResult from line 90: " + isResult);
+                            // console.log("isResult from line 90: " + isResult);
                         }
 
 
@@ -237,17 +237,21 @@ function placeKeys(){
                         // clear();                            
                         break
                         
-                    case UiText.EQUAL:
-                        num2 = tempNumber;
-                        // console.log("tempNumber is: " + tempNumber);
-                        // console.log("num2 is: " + num2);
-                        // display.innerText += UiText.EQUAL;
-                        display.innerText = operate(operator, num1, num2); 
-                        tempNumber = 0;
-                        num1 = 0;
-                        num2 = 0;
-                        isResult = true;
-                        console.log("isResult at UiText.EQUAL: " + true);
+                    case UiText.EQUAL:                        
+                    // console.log("tempNumber is: " + tempNumber);
+                    // console.log("num1 is: " + num1);
+                    // console.log("num2 is: " + num2);
+                    // display.innerText += UiText.EQUAL;
+                        if (num1 && tempNumber){
+                            num2 = tempNumber;
+                            display.innerText = operate(operator, num1, num2); 
+                            tempNumber = 0;
+                            num1 = 0;
+                            num2 = 0;
+                            isResult = true;
+                            // console.log("isResult at UiText.EQUAL: " + true);
+
+                        }                     
                         break 
                 }
             }      
@@ -274,7 +278,7 @@ const divide = (a, b) => a / b;
 const clear = () => {
     display.innerText = Number(0);
     isResult = false;
-    console.log("isResult at clear(): " + isResult);
+    // console.log("isResult at clear(): " + isResult);
 }
 
 function operate(operation, num1, num2){
@@ -292,4 +296,4 @@ function operate(operation, num1, num2){
     }
 }
 
-console.log("isResult at the end: " + isResult);
+// console.log("isResult at the end: " + isResult);
