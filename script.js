@@ -243,6 +243,9 @@ function placeKeys(){
                     // console.log("num1 is: " + num1);
                     // console.log("num2 is: " + num2);
                     // display.innerText += UiText.EQUAL;
+                        if (num1 && !tempNumber){
+                            display.innerText = "Div by 0 error.\nPress AC key.";
+                        }
                         if (num1 && tempNumber){
                             num2 = tempNumber;
                             display.innerText = operate(operator, num1, num2); 
@@ -291,6 +294,9 @@ function operate(operation, num1, num2){
         case multiply:
             return multiply(num1, num2);
         case divide:
+            // if (num2 == 0){
+            //     console.log("Can't divide by 0.");
+            // }
             return divide(num1, num2);
         default:
             return "Invalid input"
