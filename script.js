@@ -133,6 +133,18 @@ function placeKeys(){
                         break
 
                     case UiText.NEGATIVE_POSITIVE:
+                        // console.log("tempNumber, pre: " + tempNumber);
+                        // console.log("num1, pre: " + num1);
+                        // console.log("num2, pre: " + num2);
+                        if (display.innerText){
+                            display.innerText *= -1;
+                            tempNumber *= -1; 
+                        }
+                        // console.log("tempNumber, post: " + tempNumber);
+                        // console.log("num1, post: " + num1);
+                        // console.log("num2, post: " + num2);
+
+                        /*
                         if (num2 != 0) {
                             display.innerText = num2 * -1;
                             num2 *= -1;
@@ -142,6 +154,7 @@ function placeKeys(){
                         } else if (display.innerText != 0){
                             display.innerText = display.innerText * -1;
                         }
+                        */
                         break
 
                     case UiText.PERCENT: 
@@ -297,10 +310,10 @@ const clear = () => {
     tempNumber = 0;
     display.innerText = Number(0);
     isResult = false;
-    console.log("display: " + display.innerText);
-    console.log("tempNumber: " + tempNumber);
-    console.log("num1: " + num1);
-    console.log("num2: " + num2);
+    // console.log("display: " + display.innerText);
+    // console.log("tempNumber: " + tempNumber);
+    // console.log("num1: " + num1);
+    // console.log("num2: " + num2);
 
     // console.log("isResult at clear(): " + isResult);
 }
