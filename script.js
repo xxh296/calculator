@@ -158,6 +158,11 @@ function placeKeys(){
                         break
 
                     case UiText.PERCENT: 
+                        if (display.innerText){
+                            display.innerText *= 0.01;
+                            tempNumber *= 0.01; 
+                        }
+                    /*
                         if (num2 != 0) {
                             display.innerText = num2 * 0.01;
                             num2 *= 0.01;
@@ -167,6 +172,7 @@ function placeKeys(){
                         } else if (display.innerText != 0){
                             display.innerText = display.innerText * 0.01;
                         }
+                            */
                         break
 
                     case UiText.BACKSPACE:
