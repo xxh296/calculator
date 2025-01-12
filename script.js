@@ -276,9 +276,9 @@ function placeKeys(){
                     // console.log("num1 is: " + num1);
                     // console.log("num2 is: " + num2);
                     // display.innerText += UiText.EQUAL;
-                        if (num1 && !tempNumber && operator == divide){
-                            display.innerText = "Div by 0 error.\nPress AC key.";
-                        }
+                        // if (num1 && !tempNumber && operator == divide){
+                        //     display.innerText = "Div by 0 error.\nPress AC key.";
+                        // }
                         if (num1){
                         // if (num1 && tempNumber){
                             num2 = tempNumber;
