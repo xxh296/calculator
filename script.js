@@ -320,7 +320,16 @@ placeKeys();
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
+// const divide = (a, b) => a / b;
+const divide = (a, b) => {
+    if (b === 0) {
+        return "Div by 0 error.\nPress AC key.";
+    }
+    return a / b;
+};
+
+
+
 const clear = () => {
     tempNumber = 0;
     display.innerText = Number(0);
