@@ -185,17 +185,16 @@ function placeKeys(){
                         break
                         
                     case UiText.EQUAL:  
-                    console.log(runningTotal);
-                    console.log(display.innerText);
                     display.innerText = operate(operator, runningTotal, Number(display.innerText));  
                     tempNumber = 0;
                     num1 = 0;
                     num2 = 0;
+                    runningTotal = 0;
                     isResult = true;
 
                     // runningTotal = 0;
                     // clear();  
-                                       
+
                         // if (num1){
                         //     num2 = tempNumber;
                         //     display.innerText = operate(operator, num1, num2); 
