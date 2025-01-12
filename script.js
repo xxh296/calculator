@@ -119,13 +119,11 @@ function placeKeys(){
 
                         if (runningTotal == 0){
                             runningTotal = Number(display.innerText);
-                            console.log("runningTotal in if: " + runningTotal);
                         } else {
                             display.innerText = operate(operator, runningTotal, Number(display.innerText));
                             runningTotal = Number(display.innerText);
-                            console.log("runningTotal in else: " + runningTotal);
+                            // console.log("runningTotal, plus: " + runningTotal);
                         }
-
 
                         if (tempNumber){
                             num1 = tempNumber;
@@ -136,40 +134,76 @@ function placeKeys(){
                         
                     case UiText.MINUS:                   
                         operator = subtract;
+
+                        if (runningTotal == 0){
+                            runningTotal = Number(display.innerText);
+                        } else {
+                            display.innerText = operate(operator, runningTotal, Number(display.innerText));
+                            runningTotal = Number(display.innerText);
+                            // console.log("runningTotal, minus: " + runningTotal);
+                        }
+
                         if (tempNumber){
                             num1 = tempNumber;
                             tempNumber = 0;
-                            display.innerText = num1;
+                            // display.innerText = num1;
                         }
                         break
                     
                     case UiText.MULTIPLY:                   
                         operator = multiply;
+                        if (runningTotal == 0){
+                            runningTotal = Number(display.innerText);
+                        } else {
+                            display.innerText = operate(operator, runningTotal, Number(display.innerText));
+                            runningTotal = Number(display.innerText);
+                            // console.log("runningTotal, minus: " + runningTotal);
+                        }
+
                         if (tempNumber){
                             num1 = tempNumber;
                             tempNumber = 0;
-                            display.innerText = num1;
+                            // display.innerText = num1;
                         }
                         break
 
-                    case UiText.DIVIDE:                   
-                        operator = divide;
-                        if (tempNumber){
-                            num1 = tempNumber;
-                            tempNumber = 0;
-                            display.innerText = num1;
-                        }
+                    case UiText.DIVIDE: 
+                    operator = divide;                  
+                    if (runningTotal == 0){
+                        runningTotal = Number(display.innerText);
+                    } else {
+                        display.innerText = operate(operator, runningTotal, Number(display.innerText));
+                        runningTotal = Number(display.innerText);
+                        // console.log("runningTotal, minus: " + runningTotal);
+                    }
+
+                    if (tempNumber){
+                        num1 = tempNumber;
+                        tempNumber = 0;
+                        // display.innerText = num1;
+                    }
                         break
                         
-                    case UiText.EQUAL:                        
-                        if (num1){
-                            num2 = tempNumber;
-                            display.innerText = operate(operator, num1, num2); 
-                            tempNumber = 0;
-                            num1 = 0;
-                            num2 = 0;
-                            isResult = true;
-                        }                     
+                    case UiText.EQUAL:  
+                    console.log(runningTotal);
+                    console.log(display.innerText);
+                    display.innerText = operate(operator, runningTotal, Number(display.innerText));  
+                    tempNumber = 0;
+                    num1 = 0;
+                    num2 = 0;
+                    isResult = true;
+
+                    // runningTotal = 0;
+                    // clear();  
+                                       
+                        // if (num1){
+                        //     num2 = tempNumber;
+                        //     display.innerText = operate(operator, num1, num2); 
+                        //     tempNumber = 0;
+                        //     num1 = 0;
+                        //     num2 = 0;
+                        //     isResult = true;
+                        // }                     
                         break 
                 }
             }      
