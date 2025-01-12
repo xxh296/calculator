@@ -184,13 +184,16 @@ function placeKeys(){
                     }
                         break
                         
-                    case UiText.EQUAL:  
-                    display.innerText = operate(operator, runningTotal, Number(display.innerText));  
-                    tempNumber = 0;
-                    num1 = 0;
-                    num2 = 0;
-                    runningTotal = 0;
-                    isResult = true;
+                    case UiText.EQUAL:
+                        if (isResult == false){
+                            display.innerText = operate(operator, runningTotal, Number(display.innerText));  
+                            tempNumber = 0;
+                            num1 = 0;
+                            num2 = 0;
+                            runningTotal = 0;
+                            isResult = true;
+                        }
+
 
                     // runningTotal = 0;
                     // clear();  
