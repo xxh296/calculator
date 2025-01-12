@@ -29,6 +29,7 @@ let tempNumber = 0;
 let operator = "";
 let isResult = false;
 let runningTotal = 0;
+let operationKeyPress = false;
 
 function placeKeys(){
     const keys = Object.keys(UiText);  // Get keys from UiText
@@ -58,6 +59,7 @@ function placeKeys(){
         key.addEventListener("click", () => {
             key.style.backgroundColor = "rgb(180,180,180";
             if (/^[\d.]$/.test(key.innerText)) {
+                operationKeyPress = false;
                 if (key.innerText === "." && tempNumber.toString().includes(".")) {
                     console.log("ERROR: \".\" character already exists.");
                 } else if (display.innerText.length <= 11){
@@ -90,7 +92,7 @@ function placeKeys(){
                         break
 
                     case UiText.NEGATIVE_POSITIVE:
-                        if (display.innerText){
+                        if (display.innerText && !operationKeyPress){
                             display.innerText *= -1;
                             tempNumber *= -1; 
                         }
@@ -130,6 +132,7 @@ function placeKeys(){
                             tempNumber = 0;
                             // display.innerText = num1;
                         }
+                        operationKeyPress = true;
                         break
                         
                     case UiText.MINUS:                   
@@ -148,6 +151,7 @@ function placeKeys(){
                             tempNumber = 0;
                             // display.innerText = num1;
                         }
+                        operationKeyPress = true;
                         break
                     
                     case UiText.MULTIPLY:                   
@@ -165,6 +169,7 @@ function placeKeys(){
                             tempNumber = 0;
                             // display.innerText = num1;
                         }
+                        operationKeyPress = true;
                         break
 
                     case UiText.DIVIDE: 
@@ -182,6 +187,7 @@ function placeKeys(){
                         tempNumber = 0;
                         // display.innerText = num1;
                     }
+                    operationKeyPress = true;
                         break
                         
                     case UiText.EQUAL:
@@ -205,7 +211,8 @@ function placeKeys(){
                         //     num1 = 0;
                         //     num2 = 0;
                         //     isResult = true;
-                        // }                     
+                        // }   
+                        operationKeyPress = false;                  
                         break 
                 }
             }      
