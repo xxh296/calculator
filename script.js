@@ -28,6 +28,7 @@ let num2 = 0;
 let tempNumber = 0;
 let operator = "";
 let isResult = false;
+let runningTotal = 0;
 
 function placeKeys(){
     const keys = Object.keys(UiText);  // Get keys from UiText
@@ -115,10 +116,21 @@ function placeKeys(){
 
                     case UiText.PLUS:                   
                         operator = add;
+
+                        if (runningTotal == 0){
+                            runningTotal = Number(display.innerText);
+                            console.log("runningTotal in if: " + runningTotal);
+                        } else {
+                            display.innerText = operate(operator, runningTotal, Number(display.innerText));
+                            runningTotal = Number(display.innerText);
+                            console.log("runningTotal in else: " + runningTotal);
+                        }
+
+
                         if (tempNumber){
                             num1 = tempNumber;
                             tempNumber = 0;
-                            display.innerText = num1;
+                            // display.innerText = num1;
                         }
                         break
                         
@@ -190,6 +202,7 @@ const clear = () => {
     tempNumber = 0;
     display.innerText = Number(0);
     isResult = false;
+    runningTotal = 0;
 }
 
 function operate(operation, num1, num2){
