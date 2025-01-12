@@ -108,7 +108,7 @@ function placeKeys(){
                             display.innerText = display.innerText.slice(0, -1);
                         }
 
-                        if (display.innerText == ""){
+                        if (display.innerText == "" || display.innerText == "-"){
                             display.innerText = 0;
                         }
                         tempNumber = Number(display.innerText);
