@@ -279,8 +279,17 @@ function placeKeys(){
                         if (num1 && !tempNumber && operator == divide){
                             display.innerText = "Div by 0 error.\nPress AC key.";
                         }
-                        if (num1 && tempNumber){
+                        if (num1){
+                        // if (num1 && tempNumber){
                             num2 = tempNumber;
+
+                            // if (operator == divide){
+                            //     tempNumber = 0;
+                            //     num1 = 0;
+                            //     num2 = 0;
+                            //     return "Div by 0 error.\nPress AC key.";
+                            // }
+
                             display.innerText = operate(operator, num1, num2); 
                             tempNumber = 0;
                             num1 = 0;
