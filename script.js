@@ -58,74 +58,30 @@ function placeKeys(){
             key.style.backgroundColor = "rgb(180,180,180";
             if (/^[\d.]$/.test(key.innerText)) {
                 if (key.innerText === "." && tempNumber.toString().includes(".")) {
-                // if (key.innerText === "." && display.innerText.includes(".")) {
                     console.log("ERROR: \".\" character already exists.");
                 } else if (display.innerText.length <= 11){
-
-                    // if (isResult){
-                    //     clear();
-                        // display.innerText = "";
-
-                    
-
-
-
-                    // console.log("tempNumber: " + tempNumber);
-                    // console.log("num1: " + num1);
-                    // console.log("num2: " + num2);
-                    // console.log("display.innerText: " + display.innerText);
                     if (display.innerText == 0){
                         display.innerText = "";
                         display.innerText += key.innerText;
                         tempNumber = Number(display.innerText);
-
-                        // console.log("tempNumber: " + tempNumber);
-                        // console.log("num1: " + num1);
-                        // console.log("num2: " + num2);
-                        // console.log("display.innerText: " + display.innerText);
                     }else {
-
                         if (isResult){
                             display.innerText = "";
                             isResult = false;
-                            // console.log("isResult from line 90: " + isResult);
                         }
-
-
                         if (num2 == 0 && num1 != 0 && tempNumber ==0){
                             display.innerText = "";
                             display.innerText += key.innerText;
                             tempNumber = Number(display.innerText);
-
-                            // console.log("tempNumber: " + tempNumber);
-                            // console.log("num1: " + num1);
-                            // console.log("num2: " + num2);
-                            // console.log("display.innerText: " + display.innerText);
                         } else {
                             display.innerText += key.innerText;
                             tempNumber = Number(display.innerText);
-
-                            // console.log("tempNumber: " + tempNumber);
-                            // console.log("num1: " + num1);
-                            // console.log("num2: " + num2);
-                            // console.log("display.innerText: " + display.innerText);
                         }                        
                     }  
-                    // console.log("Before the 'stray' isResult at line 114: " + isResult);
-                    // isResult = false;
-                    // console.log("The 'stray' isResult at line 114: " + isResult);
-                // } 
-                // else {
-                //     isResult = false;
-                // }
-
-
-
                 } else {
                     console.log("ERROR: Display is full.")
                 }
             }
-
             if (!/^[\d.]$/.test(key.innerText)){
                 switch (key.innerText){
                     case UiText.AC:
@@ -133,28 +89,10 @@ function placeKeys(){
                         break
 
                     case UiText.NEGATIVE_POSITIVE:
-                        // console.log("tempNumber, pre: " + tempNumber);
-                        // console.log("num1, pre: " + num1);
-                        // console.log("num2, pre: " + num2);
                         if (display.innerText){
                             display.innerText *= -1;
                             tempNumber *= -1; 
                         }
-                        // console.log("tempNumber, post: " + tempNumber);
-                        // console.log("num1, post: " + num1);
-                        // console.log("num2, post: " + num2);
-
-                        /*
-                        if (num2 != 0) {
-                            display.innerText = num2 * -1;
-                            num2 *= -1;
-                        } else if(num1 != 0){
-                            display.innerText = num1 * -1;
-                            num1 *= -1;
-                        } else if (display.innerText != 0){
-                            display.innerText = display.innerText * -1;
-                        }
-                        */
                         break
 
                     case UiText.PERCENT: 
@@ -162,40 +100,9 @@ function placeKeys(){
                             display.innerText *= 0.01;
                             tempNumber *= 0.01; 
                         }
-                    /*
-                        if (num2 != 0) {
-                            display.innerText = num2 * 0.01;
-                            num2 *= 0.01;
-                        } else if(num1 != 0){
-                            display.innerText = num1 * 0.01;
-                            num1 *= 0.01;
-                        } else if (display.innerText != 0){
-                            display.innerText = display.innerText * 0.01;
-                        }
-                            */
                         break
 
                     case UiText.BACKSPACE:
-                        /*
-                        if (num2 != 0) {
-                            display.innerText = num2.toString().slice(0, -1);
-                            // if (!display.innerText) {
-                            //     display.innerText = "0";
-                            // }
-                            num2 = Number(display.innerText);
-                        } else if(num1 != 0){
-                            display.innerText = num1.toString().slice(0, -1);
-                            // if (!display.innerText) {
-                            //     display.innerText = "0";
-                            // }
-                            num1 = Number(display.innerText);
-                        } else if (display.innerText != 0){
-                            display.innerText = display.innerText.slice(0, -1);
-                            // if (!display.innerText) {
-                            //     display.innerText = "0";
-                            // }
-                        }
-                            */
                         if (display.innerText){
                             display.innerText = display.innerText.slice(0, -1);
                         }
@@ -203,10 +110,6 @@ function placeKeys(){
                         if (display.innerText == ""){
                             display.innerText = 0;
                         }
-                        // console.log("display: " + display.innerText)
-                        // console.log("tempNumber: " + tempNumber);
-                        // console.log("num1: " + num1);
-                        // console.log("num2: " + num2);
                         tempNumber = Number(display.innerText);
                         break
 
@@ -217,13 +120,6 @@ function placeKeys(){
                             tempNumber = 0;
                             display.innerText = num1;
                         }
-
-
-                        // console.log("tempNumber: " + tempNumber);
-                        // console.log("num1: " + num1);
-                        // console.log("num2: " + num2);
-                        // console.log("display.innerText: " + display.innerText);
-                        // clear();                            
                         break
                         
                     case UiText.MINUS:                   
@@ -233,12 +129,6 @@ function placeKeys(){
                             tempNumber = 0;
                             display.innerText = num1;
                         }
-
-                        // console.log("tempNumber: " + tempNumber);
-                        // console.log("num1: " + num1);
-                        // console.log("num2: " + num2);
-                        // console.log("display.innerText: " + display.innerText);
-                        // clear();                            
                         break
                     
                     case UiText.MULTIPLY:                   
@@ -248,12 +138,6 @@ function placeKeys(){
                             tempNumber = 0;
                             display.innerText = num1;
                         }
-
-                        // console.log("tempNumber: " + tempNumber);
-                        // console.log("num1: " + num1);
-                        // console.log("num2: " + num2);
-                        // console.log("display.innerText: " + display.innerText);
-                        // clear();                            
                         break
 
                     case UiText.DIVIDE:                   
@@ -263,45 +147,20 @@ function placeKeys(){
                             tempNumber = 0;
                             display.innerText = num1;
                         }
-
-                        // console.log("tempNumber: " + tempNumber);
-                        // console.log("num1: " + num1);
-                        // console.log("num2: " + num2);
-                        // console.log("display.innerText: " + display.innerText);
-                        // clear();                            
                         break
                         
                     case UiText.EQUAL:                        
-                    // console.log("tempNumber is: " + tempNumber);
-                    // console.log("num1 is: " + num1);
-                    // console.log("num2 is: " + num2);
-                    // display.innerText += UiText.EQUAL;
-                        // if (num1 && !tempNumber && operator == divide){
-                        //     display.innerText = "Div by 0 error.\nPress AC key.";
-                        // }
                         if (num1){
-                        // if (num1 && tempNumber){
                             num2 = tempNumber;
-
-                            // if (operator == divide){
-                            //     tempNumber = 0;
-                            //     num1 = 0;
-                            //     num2 = 0;
-                            //     return "Div by 0 error.\nPress AC key.";
-                            // }
-
                             display.innerText = operate(operator, num1, num2); 
                             tempNumber = 0;
                             num1 = 0;
                             num2 = 0;
                             isResult = true;
-                            // console.log("isResult at UiText.EQUAL: " + true);
-
                         }                     
                         break 
                 }
             }      
-            // restore the original color
             setTimeout(() => {
                 if (/^\d$/.test(key.innerText)) {
                     key.style.backgroundColor = btnColorNumbers;
@@ -320,7 +179,6 @@ placeKeys();
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
-// const divide = (a, b) => a / b;
 const divide = (a, b) => {
     if (b === 0) {
         return "Div by 0 error.\nPress AC key.";
@@ -328,18 +186,10 @@ const divide = (a, b) => {
     return a / b;
 };
 
-
-
 const clear = () => {
     tempNumber = 0;
     display.innerText = Number(0);
     isResult = false;
-    // console.log("display: " + display.innerText);
-    // console.log("tempNumber: " + tempNumber);
-    // console.log("num1: " + num1);
-    // console.log("num2: " + num2);
-
-    // console.log("isResult at clear(): " + isResult);
 }
 
 function operate(operation, num1, num2){
@@ -356,5 +206,3 @@ function operate(operation, num1, num2){
             return "Invalid input"
     }
 }
-
-// console.log("isResult at the end: " + isResult);
