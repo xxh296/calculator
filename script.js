@@ -207,7 +207,7 @@ function placeKeys(){
                         // console.log("tempNumber: " + tempNumber);
                         // console.log("num1: " + num1);
                         // console.log("num2: " + num2);
-                        tempNumber = display.innerText;
+                        tempNumber = Number(display.innerText);
                         break
 
                     case UiText.PLUS:                   
@@ -276,7 +276,7 @@ function placeKeys(){
                     // console.log("num1 is: " + num1);
                     // console.log("num2 is: " + num2);
                     // display.innerText += UiText.EQUAL;
-                        if (num1 && !tempNumber){
+                        if (num1 && !tempNumber && operator == divide){
                             display.innerText = "Div by 0 error.\nPress AC key.";
                         }
                         if (num1 && tempNumber){
