@@ -191,6 +191,10 @@ function placeKeys(){
                         break
                         
                     case UiText.EQUAL:
+                        if (!operator){
+                            isResult = true;
+                        }
+
                         if (isResult == false){
                             display.innerText = operate(operator, runningTotal, Number(display.innerText));  
                             tempNumber = 0;
